@@ -11,11 +11,22 @@ module.exports = function(grunt){
       options: {
         run: true
       }
+    },
+    watch: {
+    
+
+      // run tests on changes
+      scripts: { 
+        files: ['src/**/*.js', 'tests/**/*.js'], 
+        tasks: ['mocha'] 
+      } 
     }
+
   });
 
   // Load grunt mocha task
   grunt.loadNpmTasks('grunt-mocha');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('default', ['mocha']);
 };
