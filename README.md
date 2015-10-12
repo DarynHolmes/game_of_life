@@ -9,10 +9,10 @@ $ npm install -g grunt-cli
 Verify
 
 ```
-grunt --version
+$ grunt --version
 ```
 
 ```
 $ npm install
-``
+```
 
