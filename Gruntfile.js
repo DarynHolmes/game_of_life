@@ -32,9 +32,19 @@ module.exports = function(grunt){
       // run tests on changes
       scripts: { 
         files: ['src/**/*.js', 'tests/**/*.js'], 
-        tasks: ['concat','mocha'] 
+        tasks: ['jshint', 'concat','mocha'] 
       } 
+    },
+    // configure jshint to validate js files -----------------------------------
+    jshint: {
+      options: {
+        reporter: require('jshint-stylish') // use jshint-stylish to make our errors look and read good
+      },
+
+      // when this task is run, lint the Gruntfile and all js files in src
+      build: ['Gruntfile.js', 'src/**/*.js', 'tests/**/*.js']
     }
+
 
   });
 
@@ -42,6 +52,7 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-mocha');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
   grunt.registerTask('default', ['mocha']);
 };
