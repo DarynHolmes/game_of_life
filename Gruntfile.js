@@ -12,13 +12,27 @@ module.exports = function(grunt){
         run: true
       }
     },
+    concat: {
+      options: {
+        process: function(src, filepath) {
+              return '// ' + filepath + '\n' + src;
+            },
+        stripBanners: true,
+             banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
+               '<%= grunt.template.today("yyyy-mm-dd") %> */\n',
+      },
+      dist: {
+        src: ['src/**/*.js'],
+        dest: 'dist/built.js',
+      },
+    },
     watch: {
     
 
       // run tests on changes
       scripts: { 
         files: ['src/**/*.js', 'tests/**/*.js'], 
-        tasks: ['mocha'] 
+        tasks: ['concat','mocha'] 
       } 
     }
 
@@ -26,6 +40,7 @@ module.exports = function(grunt){
 
   // Load grunt mocha task
   grunt.loadNpmTasks('grunt-mocha');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('default', ['mocha']);
