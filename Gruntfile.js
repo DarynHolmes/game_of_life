@@ -22,7 +22,7 @@ module.exports = function(grunt){
                '<%= grunt.template.today("yyyy-mm-dd") %> */\n',
       },
       dist: {
-        src: ['src/**/*.js'],
+        src: ['src/models/**/*.js'],
         dest: 'dist/built.js',
       },
     },
@@ -32,7 +32,7 @@ module.exports = function(grunt){
       // run tests on changes
       scripts: { 
         files: ['src/**/*.js', 'tests/**/*.js'], 
-        tasks: ['jshint', 'concat', 'uglify', 'mocha'] 
+        tasks: ['concat', 'mocha'] 
       } 
     },
     // configure jshint to validate js files -----------------------------------
