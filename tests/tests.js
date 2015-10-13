@@ -26,4 +26,14 @@ describe("Cow", function() {
       expect(greetings).to.equal("Kate greets Baby");
     });
   });
+
+  describe("#greets with sinon", function() {
+    it("should greet", function() {
+      var cow = new Cow("Kate");
+      var spy = sinon.spy(cow, "greets");
+      var greetings = cow.greets("Baby");
+      expect(greetings).to.equal("Kate greets Baby");
+      expect(spy.called).to.equal(true);      
+    });
+  });
 });

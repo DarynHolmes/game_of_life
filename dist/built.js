@@ -1,4 +1,4 @@
-/*! game_of_life - v1.0.0 - 2015-10-12 */
+/*! game_of_life - v1.0.0 - 2015-10-13 */
 // src/app.js
 
 // src/models/cow.js
