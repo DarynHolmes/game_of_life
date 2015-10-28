@@ -10,7 +10,7 @@
     alive: function() { return this.alive },
 
     age: function(numberOfLiveNeighbours) {
-      if(numberOfLiveNeighbours < 0) {
+      if(numberOfLiveNeighbours < 0 || numberOfLiveNeighbours > 8) {
         throw new Error('Invalid neighbor count');
       }
 
