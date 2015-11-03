@@ -1,4 +1,4 @@
-/*! game_of_life - v1.0.0 - 2015-10-27 */
+/*! game_of_life - v1.0.0 - 2015-11-03 */
 // src/models/cell.js
 (function(exports) {
   "use strict";
@@ -26,43 +26,33 @@
 
 })(this);
 
-// src/models/cow.js
-// (function(exports) {
-//   "use strict";
-
-//   function Cow(name) {
-//     this.name = name || "Anon cow";
-//   }
-//   exports.Cow = Cow;
-
-//   Cow.prototype = {
-//     greets: function(target) {
-//       if (!target)
-//         throw new Error("missing target");
-//       return this.name + " greets " + target;
-//     }
-//   };
-// })(this);
 // src/models/grid.js
 (function(exports) {
   "use strict";
 
-  function Grid(x,y) {
-      this.cells = new Array();
+  function Grid() {
+      this.cells = [];
   }
   exports.Grid = Grid;
 
   Grid.prototype = {
+
+      init: function(input){
+          var size = input[0].length;
+          for(var i = 0; i < input.length; i++) {
+            if ( size != input[i].length ) {
+              throw new Error('Invalid dimensions');
+            }
+          }
+      },
+
       numberOfLiveNeighbours: function (x,y) {
         var alive = 0;
         for (var i = 0; i < this.cells.length; i++) {
             for (var h = 0; h < this.cells[i].length; h++) {
                 var cell = this.cells[i][h];
-                if(cell.alive){
-                    if(i != x || h != y){
+                if(cell.alive && (i != x || h != y)){
                         alive++;
-                    }
-
                 }
             }
         }
@@ -70,10 +60,14 @@
       },
       put: function(x, y, cell) {
           if(!this.cells[x]){
-            this.cells[x] = new Array();
+            this.cells[x] = [];
           }
           this.cells[x][y] = cell;
+      },
+      cell: function(x,y){
+        return this.cells[x][y];
       }
+
   };
 
 })(this);
