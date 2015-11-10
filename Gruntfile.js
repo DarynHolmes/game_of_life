@@ -32,7 +32,7 @@ module.exports = function(grunt){
       // run tests on changes
       scripts: { 
         files: ['src/**/*.js', 'tests/**/*.js'], 
-        tasks: ['concat', 'mocha'] 
+        tasks: ['mocha'] 
       } 
     },
     // configure jshint to validate js files -----------------------------------
