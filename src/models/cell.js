@@ -1,6 +1,6 @@
 (function(exports) {
   "use strict";
-  
+
   function Cell(isAlive) {
     this.isAlive = isAlive;
   }
@@ -10,10 +10,10 @@
     alive: function() { return this.isAlive },
 
     age: function(numberOfLiveNeighbours) {
-      if(numberOfLiveNeighbours < 0) {
+      if(numberOfLiveNeighbours < 0 || numberOfLiveNeighbours > 8) {
         throw new Error('Invalid neighbor count');
       }
-
+      
       if ( this.isAlive ) {
         this.isAlive = numberOfLiveNeighbours === 2 || numberOfLiveNeighbours === 3;
       } else {

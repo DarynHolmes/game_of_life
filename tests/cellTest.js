@@ -83,7 +83,7 @@ describe("Cell", function() {
        expect(block).to.throw('Invalid neighbor count');
     });
 
-    xit("should throw an exception if there are more than 8 neighbors", function() {
+    it("should throw an exception if there are more than 8 neighbors", function() {
       var block = function() { cell.age(9) };
        expect(block).to.throw('Invalid neighbor count');
     });
