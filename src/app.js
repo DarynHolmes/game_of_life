@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // var world = new World();
-  // world.eachCell(function(cell, x, y){
+  // world.each(function(isAlive, x, y){
     
 
   // });
