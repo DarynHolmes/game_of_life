@@ -32,12 +32,44 @@
     age: function() {
       for(var r = 0; r < this.rows; r++) {
         for(var c = 0; c < this.cols; c++) {
-            this.cells[r][c] = false; 
+            this.cells[r][c] = this.cells[r][c] && this.nrOfLiveNeighbors(r,c) === 3; 
         }
       }
-    }
+    },
+    nrOfLiveNeighbors: function (r,c) {
+      var count = 0;
 
-    
+      if (this.cells[r-1] && this.cells[r-1][c-1]) {
+        count ++;
+      }
+      if (this.cells[r-1] && this.cells[r-1][c]) {
+        count ++;
+      }
+      if (this.cells[r-1] && this.cells[r-1][c+1]) {
+        count ++;
+      }
+
+      if (this.cells[r+1] && this.cells[r+1][c-1]) {
+        count ++;
+      }
+      if (this.cells[r+1] && this.cells[r+1][c]) {
+        count ++;
+      }
+      if (this.cells[r+1] && this.cells[r+1][c+1]) {
+        count ++;
+      }
+
+
+      if (this.cells[r] && this.cells[r][c-1]) {
+        count ++;
+      }
+      if (this.cells[r] && this.cells[r][c+1]) {
+        count ++;
+      }
+
+      console.log("AAAAAAAAAAAAAAAA " +count);
+      return count;
+    }
   };
 
 })(this);
