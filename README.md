@@ -9,3 +9,11 @@ $ npm install -g grunt-cli
 $ npm install
 ```
 
+## To run it
+
+To run the tests:
+```
+grunt watch
+```
+
+To run the app - open `src/index.html`
