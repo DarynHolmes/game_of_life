@@ -71,7 +71,7 @@ describe("World", function() {
   });
 
   describe("aging over a single generation", function() { 
-    it("keep a dead cell dead, if it has no live neighbors", function() {
+    it("a dead cell stays dead, if it has no live neighbors", function() {
          world = new World(3,3, function(x,y) {
           return false;
          });
