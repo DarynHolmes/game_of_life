@@ -32,7 +32,11 @@
     age: function() {
       for(var r = 0; r < this.rows; r++) {
         for(var c = 0; c < this.cols; c++) {
-            this.cells[r][c] = this.cells[r][c] && this.nrOfLiveNeighbors(r,c) === 3; 
+          if (this.cells[r][c] === false && this.nrOfLiveNeighbors(r,c) === 2) {
+            this.cells[r][c] = false; 
+          } else {
+            this.cells[r][c] = this.nrOfLiveNeighbors(r,c) === 3 || this.nrOfLiveNeighbors(r,c) === 2; 
+          }
         }
       }
     },
@@ -67,7 +71,6 @@
         count ++;
       }
 
-      console.log("AAAAAAAAAAAAAAAA " +count);
       return count;
     }
   };
