@@ -30,15 +30,29 @@
       }
     },
     age: function() {
+
+      var newCells = [];
+
       for(var r = 0; r < this.rows; r++) {
         for(var c = 0; c < this.cols; c++) {
           if (this.cells[r][c] === false && this.nrOfLiveNeighbors(r,c) === 2) {
-            this.cells[r][c] = false; 
+            if (newCells[r]) {
+                newCells[r][c] = false;
+            }  else {
+                newCells[r] = [];
+                newCells[r][c] = false;
+            }
           } else {
-            this.cells[r][c] = this.nrOfLiveNeighbors(r,c) === 3 || this.nrOfLiveNeighbors(r,c) === 2; 
+            if (newCells[r]) {
+                newCells[r][c] = this.nrOfLiveNeighbors(r,c) === 3 || this.nrOfLiveNeighbors(r,c) === 2; 
+            }  else {
+                newCells[r] = [];
+                newCells[r][c] = this.nrOfLiveNeighbors(r,c) === 3 || this.nrOfLiveNeighbors(r,c) === 2; 
+            }
           }
         }
       }
+      this.cells = newCells;
     },
     nrOfLiveNeighbors: function (r,c) {
       var count = 0;
